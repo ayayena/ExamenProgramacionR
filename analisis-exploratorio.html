@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 3 Analisis Exploratorio | Examen Programacion r</title>
+  <meta name="description" content="Examen de finalizacion asignatura programacion en r" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 3 Analisis Exploratorio | Examen Programacion r" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Examen de finalizacion asignatura programacion en r" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 3 Analisis Exploratorio | Examen Programacion r" />
+  
+  <meta name="twitter:description" content="Examen de finalizacion asignatura programacion en r" />
+  
+
+<meta name="author" content="Carola Soto Oberreuter" />
+
+
+<meta name="date" content="2024-07-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introducción.html"/>
+<link rel="next" href="analisis-descriptivo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Examen de R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Acerca de</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#uso-del-libro"><i class="fa fa-check"></i><b>1.1</b> Uso del libro</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#referencias-y-bibliografia"><i class="fa fa-check"></i><b>1.2</b> Referencias y Bibliografia</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>2</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción.html"><a href="introducción.html#librerias"><i class="fa fa-check"></i><b>2.1</b> Librerias</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción.html"><a href="introducción.html#visualizacion"><i class="fa fa-check"></i><b>2.2</b> Visualizacion</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introducción.html"><a href="introducción.html#compilando-el-proyecto"><i class="fa fa-check"></i><b>2.2.1</b> Compilando el proyecto</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introducción.html"><a href="introducción.html#visualizar-enlace-pubicado-en-github"><i class="fa fa-check"></i><b>2.2.2</b> Visualizar enlace pubicado en github</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html"><i class="fa fa-check"></i><b>3</b> Analisis Exploratorio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#se-declara-directorio-manejo-de-funciones"><i class="fa fa-check"></i><b>3.1</b> Se declara directorio manejo de funciones</a></li>
+<li class="chapter" data-level="3.2" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#declaracion-de-directorio-conjunto-de-datos"><i class="fa fa-check"></i><b>3.2</b> Declaracion de directorio conjunto de datos</a></li>
+<li class="chapter" data-level="3.3" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#lectura-de-conjunto-de-datos"><i class="fa fa-check"></i><b>3.3</b> Lectura de conjunto de datos</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#tabla-de-los-10-primeros-registros-del-dataset"><i class="fa fa-check"></i><b>3.3.1</b> Tabla de los 10 primeros registros del dataset</a></li>
+<li class="chapter" data-level="3.3.2" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#obtencion-de-tipos-de-variables"><i class="fa fa-check"></i><b>3.3.2</b> Obtencion de tipos de variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#verificar-valores-nulos-na-en-dataset"><i class="fa fa-check"></i><b>3.3.3</b> Verificar valores nulos NA en dataset</a></li>
+<li class="chapter" data-level="3.3.4" data-path="analisis-exploratorio.html"><a href="analisis-exploratorio.html#verificar-valores-fuera-de-rango-o-outlier"><i class="fa fa-check"></i><b>3.3.4</b> Verificar valores fuera de rango o outlier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html"><i class="fa fa-check"></i><b>4</b> Analisis Descriptivo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#tabla-de-frecuencias-por-región"><i class="fa fa-check"></i><b>4.1</b> Tabla de frecuencias por región</a></li>
+<li class="chapter" data-level="4.2" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#gráfico-de-frecuencia-por-región"><i class="fa fa-check"></i><b>4.2</b> Gráfico de frecuencia por región</a></li>
+<li class="chapter" data-level="4.3" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#tabla-de-frecuencia-por-total-de-atenciones"><i class="fa fa-check"></i><b>4.3</b> Tabla de frecuencia por total de atenciones</a></li>
+<li class="chapter" data-level="4.4" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#gráfico-de-frecuencia-por-total-de-atenciones"><i class="fa fa-check"></i><b>4.4</b> Gráfico de frecuencia por total de atenciones</a></li>
+<li class="chapter" data-level="4.5" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#medidas-de-tendencia-central-variables-cuantitativas"><i class="fa fa-check"></i><b>4.5</b> Medidas de tendencia central variables cuantitativas</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#media-para-la-variable-total"><i class="fa fa-check"></i><b>4.5.1</b> Media para la variable Total</a></li>
+<li class="chapter" data-level="4.5.2" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#mediana-para-la-variable-total"><i class="fa fa-check"></i><b>4.5.2</b> Mediana para la variable Total</a></li>
+<li class="chapter" data-level="4.5.3" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#moda-para-la-variable-total"><i class="fa fa-check"></i><b>4.5.3</b> Moda para la variable total</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#medidas-de-dispersion"><i class="fa fa-check"></i><b>4.6</b> Medidas de dispersion</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#varianza-para-la-variable-total"><i class="fa fa-check"></i><b>4.6.1</b> Varianza para la variable total</a></li>
+<li class="chapter" data-level="4.6.2" data-path="analisis-descriptivo.html"><a href="analisis-descriptivo.html#desviacion-estandar-para-la-variable-total"><i class="fa fa-check"></i><b>4.6.2</b> Desviacion estandar para la variable total</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="optimización.html"><a href="optimización.html"><i class="fa fa-check"></i><b>5</b> Optimización</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="optimización.html"><a href="optimización.html#carga-la-funcion-kmeans"><i class="fa fa-check"></i><b>5.1</b> Carga la funcion Kmeans</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Examen Programacion r</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analisis-exploratorio" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capitulo 3</span> Analisis Exploratorio<a href="analisis-exploratorio.html#analisis-exploratorio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este capítulo se establece el directorio donde se encuentra en conjunto de datos, se hace la lectura de los datos, se visualiza una muestra pequeña de registros, se identifican valores nulos, valores atípicos y se identifican las variables cuantitativas y cualitativas.</p>
+<div id="se-declara-directorio-manejo-de-funciones" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Se declara directorio manejo de funciones<a href="analisis-exploratorio.html#se-declara-directorio-manejo-de-funciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>## [1] &quot;Directorio No Existe:&quot;
+## [1] &quot;Librerias Cargadas&quot;</code></pre>
+</div>
+<div id="declaracion-de-directorio-conjunto-de-datos" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Declaracion de directorio conjunto de datos<a href="analisis-exploratorio.html#declaracion-de-directorio-conjunto-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="analisis-exploratorio.html#cb2-1" tabindex="-1"></a><span class="fu">tryCatch</span>(</span>
+<span id="cb2-2"><a href="analisis-exploratorio.html#cb2-2" tabindex="-1"></a>      <span class="co"># Código a ser evaluado</span></span>
+<span id="cb2-3"><a href="analisis-exploratorio.html#cb2-3" tabindex="-1"></a>      <span class="at">expr =</span> {</span>
+<span id="cb2-4"><a href="analisis-exploratorio.html#cb2-4" tabindex="-1"></a>        <span class="fu">setwd</span>(<span class="st">&quot;C:/Magister Ciencias Datos UDLA/Clases R/ExamenProgramacionR&quot;</span>)</span>
+<span id="cb2-5"><a href="analisis-exploratorio.html#cb2-5" tabindex="-1"></a>      },</span>
+<span id="cb2-6"><a href="analisis-exploratorio.html#cb2-6" tabindex="-1"></a>       <span class="at">error =</span> <span class="cf">function</span>(e){</span>
+<span id="cb2-7"><a href="analisis-exploratorio.html#cb2-7" tabindex="-1"></a>        <span class="fu">message</span>(<span class="fu">paste</span>(<span class="st">&quot;Directorio No Existe:&quot;</span>, directorio))</span>
+<span id="cb2-8"><a href="analisis-exploratorio.html#cb2-8" tabindex="-1"></a>      }</span>
+<span id="cb2-9"><a href="analisis-exploratorio.html#cb2-9" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="lectura-de-conjunto-de-datos" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Lectura de conjunto de datos<a href="analisis-exploratorio.html#lectura-de-conjunto-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="analisis-exploratorio.html#cb3-1" tabindex="-1"></a>AtenUrgencia <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;AtencionesUrgencia2023.csv&quot;</span>, </span>
+<span id="cb3-2"><a href="analisis-exploratorio.html#cb3-2" tabindex="-1"></a>                           <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>, <span class="at">escape_double =</span> <span class="cn">FALSE</span>, <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,<span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&quot;Latin1&quot;</span>))</span>
+<span id="cb3-3"><a href="analisis-exploratorio.html#cb3-3" tabindex="-1"></a>AtenUrgencia</span></code></pre></div>
+<pre><code>## # A tibble: 8,899,080 × 21
+##    IdEstablecimiento NEstablecimiento  IdCausa GlosaCausa Total Menores_1 De_1_a_4 De_5_a_14 De_15_a_64
+##    &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 07-961            SUR HIJUELAS           17 Otras cau…     0         0        0         0          0
+##  2 16-959            SUR Río Claro          17 Otras cau…     0         0        0         0          0
+##  3 15-953            SUR Olivar             17 Otras cau…     0         0        0         0          0
+##  4 03-932            SUR Socaire            17 Otras cau…     0         0        0         0          0
+##  5 14-831            SAPU La Florida        17 Otras cau…     0         0        0         0          0
+##  6 05-805            SAR Tierras Blan…      17 Otras cau…     1         0        0         0          1
+##  7 10-891            SAPU Marcela Jaq…      17 Otras cau…     0         0        0         0          0
+##  8 05-819            SAR Raúl Silva H…      17 Otras cau…     0         0        0         0          0
+##  9 19-101            Hospital de Tomé       17 Otras cau…     0         0        0         0          0
+## 10 11-809            SAPU Dra. Ana Ma…      17 Otras cau…     0         0        0         0          0
+## # ℹ 8,899,070 more rows
+## # ℹ 12 more variables: De_65_y_mas &lt;dbl&gt;, fecha &lt;chr&gt;, semana &lt;dbl&gt;, GLOSATIPOESTABLECIMIENTO &lt;chr&gt;,
+## #   GLOSATIPOATENCION &lt;chr&gt;, GlosaTipoCampana &lt;chr&gt;, CodigoRegion &lt;dbl&gt;, NombreRegion &lt;chr&gt;,
+## #   CodigoDependencia &lt;dbl&gt;, NombreDependencia &lt;chr&gt;, CodigoComuna &lt;dbl&gt;, NombreComuna &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="analisis-exploratorio.html#cb5-1" tabindex="-1"></a><span class="co">#spec(AtenUrgencia)</span></span></code></pre></div>
+<div id="tabla-de-los-10-primeros-registros-del-dataset" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Tabla de los 10 primeros registros del dataset<a href="analisis-exploratorio.html#tabla-de-los-10-primeros-registros-del-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="analisis-exploratorio.html#cb6-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb6-2"><a href="analisis-exploratorio.html#cb6-2" tabindex="-1"></a>  <span class="fu">head</span>(AtenUrgencia, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Tabla Muestra Inicial&#39;</span>,</span>
+<span id="cb6-3"><a href="analisis-exploratorio.html#cb6-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb6-4"><a href="analisis-exploratorio.html#cb6-4" tabindex="-1"></a>)</span></code></pre></div>
+<table style="width:100%;">
+<caption><span id="tab:nice-tab">Table 3.1: </span>Tabla Muestra Inicial</caption>
+<colgroup>
+<col width="5%" />
+<col width="8%" />
+<col width="2%" />
+<col width="8%" />
+<col width="1%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="2%" />
+<col width="7%" />
+<col width="5%" />
+<col width="5%" />
+<col width="3%" />
+<col width="8%" />
+<col width="5%" />
+<col width="7%" />
+<col width="3%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">IdEstablecimiento</th>
+<th align="left">NEstablecimiento</th>
+<th align="right">IdCausa</th>
+<th align="left">GlosaCausa</th>
+<th align="right">Total</th>
+<th align="right">Menores_1</th>
+<th align="right">De_1_a_4</th>
+<th align="right">De_5_a_14</th>
+<th align="right">De_15_a_64</th>
+<th align="right">De_65_y_mas</th>
+<th align="left">fecha</th>
+<th align="right">semana</th>
+<th align="left">GLOSATIPOESTABLECIMIENTO</th>
+<th align="left">GLOSATIPOATENCION</th>
+<th align="left">GlosaTipoCampana</th>
+<th align="right">CodigoRegion</th>
+<th align="left">NombreRegion</th>
+<th align="right">CodigoDependencia</th>
+<th align="left">NombreDependencia</th>
+<th align="right">CodigoComuna</th>
+<th align="left">NombreComuna</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">07-961</td>
+<td align="left">SUR HIJUELAS</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SUR</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">5</td>
+<td align="left">De Valparaíso</td>
+<td align="right">7</td>
+<td align="left">Viña Del Mar Quillota</td>
+<td align="right">5503</td>
+<td align="left">Hijuelas</td>
+</tr>
+<tr class="even">
+<td align="left">16-959</td>
+<td align="left">SUR Río Claro</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SUR</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">7</td>
+<td align="left">Del Maule</td>
+<td align="right">16</td>
+<td align="left">Del Maule</td>
+<td align="right">7108</td>
+<td align="left">Río Claro</td>
+</tr>
+<tr class="odd">
+<td align="left">15-953</td>
+<td align="left">SUR Olivar</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SUR</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">6</td>
+<td align="left">Del Libertador B. O’Higgins</td>
+<td align="right">15</td>
+<td align="left">Libertador B. O’Higgins</td>
+<td align="right">6111</td>
+<td align="left">Olivar</td>
+</tr>
+<tr class="even">
+<td align="left">03-932</td>
+<td align="left">SUR Socaire</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SUR</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">2</td>
+<td align="left">De Antofagasta</td>
+<td align="right">3</td>
+<td align="left">Antofagasta</td>
+<td align="right">2203</td>
+<td align="left">San Pedro de Atacama</td>
+</tr>
+<tr class="odd">
+<td align="left">14-831</td>
+<td align="left">SAPU La Florida</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SAPU</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">13</td>
+<td align="left">Metropolitana de Santiago</td>
+<td align="right">14</td>
+<td align="left">Metropolitano Suroriente</td>
+<td align="right">13110</td>
+<td align="left">La Florida</td>
+</tr>
+<tr class="even">
+<td align="left">05-805</td>
+<td align="left">SAR Tierras Blancas</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SAR</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">4</td>
+<td align="left">De Coquimbo</td>
+<td align="right">5</td>
+<td align="left">Coquimbo</td>
+<td align="right">4102</td>
+<td align="left">Coquimbo</td>
+</tr>
+<tr class="odd">
+<td align="left">10-891</td>
+<td align="left">SAPU Marcela Jaques Vargas</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SAPU</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">13</td>
+<td align="left">Metropolitana de Santiago</td>
+<td align="right">10</td>
+<td align="left">Metropolitano Occidente</td>
+<td align="right">13601</td>
+<td align="left">Talagante</td>
+</tr>
+<tr class="even">
+<td align="left">05-819</td>
+<td align="left">SAR Raúl Silva Henríquez</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SAR</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">4</td>
+<td align="left">De Coquimbo</td>
+<td align="right">5</td>
+<td align="left">Coquimbo</td>
+<td align="right">4101</td>
+<td align="left">La Serena</td>
+</tr>
+<tr class="odd">
+<td align="left">19-101</td>
+<td align="left">Hospital de Tomé</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">Hospital</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">8</td>
+<td align="left">Del Bíobío</td>
+<td align="right">19</td>
+<td align="left">Talcahuano</td>
+<td align="right">8111</td>
+<td align="left">Tomé</td>
+</tr>
+<tr class="even">
+<td align="left">11-809</td>
+<td align="left">SAPU Dra. Ana María Juricic</td>
+<td align="right">17</td>
+<td align="left">Otras causas circulatorias</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">18/06/2023</td>
+<td align="right">25</td>
+<td align="left">SAPU</td>
+<td align="left">Indiferenciado</td>
+<td align="left">Ninguna</td>
+<td align="right">13</td>
+<td align="left">Metropolitana de Santiago</td>
+<td align="right">11</td>
+<td align="left">Metropolitano Central</td>
+<td align="right">13119</td>
+<td align="left">Maipú</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="obtencion-de-tipos-de-variables" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Obtencion de tipos de variables<a href="analisis-exploratorio.html#obtencion-de-tipos-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="listado-variables-categoricas" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> Listado variables categoricas<a href="analisis-exploratorio.html#listado-variables-categoricas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="analisis-exploratorio.html#cb7-1" tabindex="-1"></a><span class="co">#obtener el listado de las variables categoricas</span></span>
+<span id="cb7-2"><a href="analisis-exploratorio.html#cb7-2" tabindex="-1"></a>listadoCategorico <span class="ot">&lt;-</span> <span class="fu">variables_categoricas</span>(AtenUrgencia)</span>
+<span id="cb7-3"><a href="analisis-exploratorio.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="analisis-exploratorio.html#cb7-4" tabindex="-1"></a><span class="cf">for</span> (tipo_columna <span class="cf">in</span> listadoCategorico )</span>
+<span id="cb7-5"><a href="analisis-exploratorio.html#cb7-5" tabindex="-1"></a>{</span>
+<span id="cb7-6"><a href="analisis-exploratorio.html#cb7-6" tabindex="-1"></a>   tipovariable<span class="ot">=</span><span class="fu">strsplit</span>(tipo_columna[[<span class="dv">1</span>]], <span class="st">&quot; &quot;</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]</span>
+<span id="cb7-7"><a href="analisis-exploratorio.html#cb7-7" tabindex="-1"></a>   <span class="fu">print</span>(tipovariable)</span>
+<span id="cb7-8"><a href="analisis-exploratorio.html#cb7-8" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;IdEstablecimiento&quot;
+## [1] &quot;NEstablecimiento&quot;
+## [1] &quot;GlosaCausa&quot;
+## [1] &quot;fecha&quot;
+## [1] &quot;GLOSATIPOESTABLECIMIENTO&quot;
+## [1] &quot;GLOSATIPOATENCION&quot;
+## [1] &quot;GlosaTipoCampana&quot;
+## [1] &quot;NombreRegion&quot;
+## [1] &quot;NombreDependencia&quot;
+## [1] &quot;NombreComuna&quot;</code></pre>
+</div>
+<div id="listado-variables-continuas-y-discretas" class="section level4 hasAnchor" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Listado variables continuas y discretas<a href="analisis-exploratorio.html#listado-variables-continuas-y-discretas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="analisis-exploratorio.html#cb9-1" tabindex="-1"></a><span class="co">#obtnencion de variables numericas</span></span>
+<span id="cb9-2"><a href="analisis-exploratorio.html#cb9-2" tabindex="-1"></a>listadoNumerico <span class="ot">&lt;-</span> <span class="fu">variables_numericas</span>(AtenUrgencia)</span>
+<span id="cb9-3"><a href="analisis-exploratorio.html#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="analisis-exploratorio.html#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="analisis-exploratorio.html#cb9-5" tabindex="-1"></a><span class="cf">for</span> (tipo_columna <span class="cf">in</span> listadoNumerico  )</span>
+<span id="cb9-6"><a href="analisis-exploratorio.html#cb9-6" tabindex="-1"></a>{</span>
+<span id="cb9-7"><a href="analisis-exploratorio.html#cb9-7" tabindex="-1"></a>   tipovariable<span class="ot">=</span><span class="fu">strsplit</span>(tipo_columna[[<span class="dv">1</span>]], <span class="st">&quot; &quot;</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]</span>
+<span id="cb9-8"><a href="analisis-exploratorio.html#cb9-8" tabindex="-1"></a>   <span class="fu">print</span>(tipovariable)</span>
+<span id="cb9-9"><a href="analisis-exploratorio.html#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;IdCausa&quot;
+## [1] &quot;Total&quot;
+## [1] &quot;Menores_1&quot;
+## [1] &quot;De_1_a_4&quot;
+## [1] &quot;De_5_a_14&quot;
+## [1] &quot;De_15_a_64&quot;
+## [1] &quot;De_65_y_mas&quot;
+## [1] &quot;semana&quot;
+## [1] &quot;CodigoRegion&quot;
+## [1] &quot;CodigoDependencia&quot;
+## [1] &quot;CodigoComuna&quot;</code></pre>
+</div>
+</div>
+<div id="verificar-valores-nulos-na-en-dataset" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Verificar valores nulos NA en dataset<a href="analisis-exploratorio.html#verificar-valores-nulos-na-en-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="analisis-exploratorio.html#cb11-1" tabindex="-1"></a>valoresNulos<span class="ot">=</span><span class="fu">sum</span>(<span class="fu">is.na</span>(AtenUrgencia))</span>
+<span id="cb11-2"><a href="analisis-exploratorio.html#cb11-2" tabindex="-1"></a>valoresNulos</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="analisis-exploratorio.html#cb13-1" tabindex="-1"></a><span class="co">#remplazo de variables continuas y discretas</span></span>
+<span id="cb13-2"><a href="analisis-exploratorio.html#cb13-2" tabindex="-1"></a><span class="cf">if</span> (valoresNulos<span class="sc">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb13-3"><a href="analisis-exploratorio.html#cb13-3" tabindex="-1"></a>{</span>
+<span id="cb13-4"><a href="analisis-exploratorio.html#cb13-4" tabindex="-1"></a>  AtenUrgencia[AtenUrgencia<span class="sc">$</span>Total <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-5"><a href="analisis-exploratorio.html#cb13-5" tabindex="-1"></a>  AtenUrgencia[AtenUrgencia<span class="sc">$</span>Menores_1 <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-6"><a href="analisis-exploratorio.html#cb13-6" tabindex="-1"></a>  AtenUrgencia[AtenUrgencia<span class="sc">$</span>De_1_a_4 <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-7"><a href="analisis-exploratorio.html#cb13-7" tabindex="-1"></a>  AtenUrgencia[AtenUrgencia<span class="sc">$</span>De_5_a_14 <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-8"><a href="analisis-exploratorio.html#cb13-8" tabindex="-1"></a>  AtenUrgencia[AtenUrgencia<span class="sc">$</span>De_15_a_64 <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-9"><a href="analisis-exploratorio.html#cb13-9" tabindex="-1"></a>  AtenUrgencia[AtenUrgencia<span class="sc">$</span>De_65_y_mas <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-10"><a href="analisis-exploratorio.html#cb13-10" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="verificar-valores-fuera-de-rango-o-outlier" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Verificar valores fuera de rango o outlier<a href="analisis-exploratorio.html#verificar-valores-fuera-de-rango-o-outlier" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se visualizan los valores atípicos o fuera de rango, se decide no reemplazar estos valores, dada la naturaleza del conjunto de datos y del proceso de registro de las atenciones de urgencia.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="analisis-exploratorio.html#cb14-1" tabindex="-1"></a><span class="co">#boxplot.stats(AtenUrgencia$Total)</span></span>
+<span id="cb14-2"><a href="analisis-exploratorio.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="analisis-exploratorio.html#cb14-3" tabindex="-1"></a><span class="co">#boxplot(AtenUrgencia$Total, col=&quot;skyblue&quot;, frame.plot=F)</span></span>
+<span id="cb14-4"><a href="analisis-exploratorio.html#cb14-4" tabindex="-1"></a><span class="fu">boxplot</span>(AtenUrgencia<span class="sc">$</span>Total, </span>
+<span id="cb14-5"><a href="analisis-exploratorio.html#cb14-5" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Totales de Atenciones&quot;</span>,</span>
+<span id="cb14-6"><a href="analisis-exploratorio.html#cb14-6" tabindex="-1"></a>        <span class="at">boxwex =</span> <span class="fl">0.5</span>,<span class="at">col=</span><span class="st">&quot;#006FB3&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducción.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analisis-descriptivo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Analisis_Exploratorio.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
